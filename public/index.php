@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">	
+	<style>
+	#textboxid {
+		height: 200px;
+		width: 800px; 
+		font-size: 14px; 
+	}
+
+	</style>
+</head>
+<h1>MHOC Bill Searchup</h1>
+
+
 <?php
 
 use Illuminate\Contracts\Http\Kernel;
@@ -53,3 +69,32 @@ $response = $kernel->handle(
 )->send();
 
 $kernel->terminate($request, $response);
+
+include "database-connect.php";
+//include "search-all.php";
+?>
+<br>
+<form action="/search-keyword.php">
+  <label for="fname">Bill Text:</label><br>
+  <input type="text" name="billtext"><br>
+  <input type="submit" value="Submit">
+</form>
+<br> <hr> <br> 
+
+<form action="addbill.php">
+Bill Number (Just numbers):<br>
+<input type="number" name="numberInput"><br>
+Bill Title:<br>
+<input type="text" name="titleInput"><br>
+ Bill Text:<br>
+<input type="text" name="textInput" id="textboxid"><br>
+<input type="submit" value="Submit">
+</form>
+
+<?php
+// include "search-keyword.php";
+$conn->close();
+?>
+
+</body>
+</html>
